@@ -167,8 +167,8 @@
     .tap-prompt.almost { color:#f0d060; }
 
     /* Gift reveal */
-    .gifts-section { max-width:480px; margin:2.5rem auto 0; padding:0 1rem; opacity:0; transform:translateY(40px); transition:opacity .8s ease,transform .8s ease; pointer-events:none; }
-    .gifts-section.reveal { opacity:1; transform:translateY(0); pointer-events:auto; }
+    .gifts-section { display:none; max-width:480px; margin:2.5rem auto 0; padding:0 1rem; opacity:0; transform:translateY(40px); transition:opacity .8s ease,transform .8s ease; pointer-events:none; }
+    .gifts-section.reveal { display:block; opacity:1; transform:translateY(0); pointer-events:auto; }
     .gifts-title { font-family:'Dancing Script',cursive; font-size:clamp(1.6rem,6vw,2.2rem); color:#f0d060; margin-bottom:1.5rem; }
     .gift-card { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.35); border:3px solid rgba(167,139,250,.5); margin-bottom:1.5rem; transform:translateY(40px); opacity:0; transition:transform .7s cubic-bezier(.34,1.56,.64,1),opacity .7s ease; }
     .gift-card.show { transform:translateY(0); opacity:1; }
