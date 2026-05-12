@@ -65,11 +65,11 @@
     #card.show { opacity:1; }
 
     /* ── HERO ── */
-    .hero { position:relative; min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; background:linear-gradient(180deg,#fff0f7 0%,var(--cream) 100%); }
-    .hero-img-wrap { width:100%; max-width:520px; margin:0 auto; position:relative; max-height:calc(100svh - 7rem); overflow:hidden; }
-    .hero-img { width:100%; display:block; max-height:calc(100svh - 7rem); object-fit:cover; object-position:top; }
+    .hero { position:relative; min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; overflow:hidden; background:linear-gradient(180deg,#fff0f7 0%,var(--cream) 100%); }
+    .hero-img-wrap { width:100%; max-width:520px; margin:0 auto; position:relative; max-height:calc(100svh - 5.5rem); overflow:hidden; flex-shrink:0; }
+    .hero-img { width:100%; display:block; max-height:calc(100svh - 5.5rem); object-fit:cover; object-position:top; }
     .hero-gradient { position:absolute; bottom:0; left:0; right:0; height:32%; pointer-events:none; background:linear-gradient(to bottom,transparent,var(--cream)); }
-    .scroll-cue { position:absolute; bottom:1.8rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:.25rem; font-family:'Dancing Script',cursive; font-size:clamp(1rem,3.5vw,1.2rem); color:var(--deep-pink); cursor:pointer; text-align:center; }
+    .scroll-cue { position:relative; left:auto; transform:none; display:flex; flex-direction:column; align-items:center; gap:.25rem; font-family:'Dancing Script',cursive; font-size:clamp(1rem,3.5vw,1.2rem); color:var(--deep-pink); cursor:pointer; text-align:center; padding:.6rem 0 .4rem; width:100%; }
     .scroll-cue .arrow { font-size:1.5rem; animation:bob 1.6s ease-in-out infinite; }
     @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(9px)} }
 
