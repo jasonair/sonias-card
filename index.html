@@ -451,7 +451,7 @@ function openCard() {
   setTimeout(()=>{
     document.getElementById('envelope-scene').classList.add('hidden');
     document.getElementById('card').classList.add('show');
-    document.body.style.overflow='';
+    document.body.style.overflowX='hidden'; document.body.style.overflowY='auto';
     cardOpen=true; setupScrollReveal(); initPresent();
   },1250);
 }
