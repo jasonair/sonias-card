@@ -452,6 +452,7 @@ function openCard() {
     document.getElementById('envelope-scene').classList.add('hidden');
     document.getElementById('card').classList.add('show');
     document.body.style.overflowX='hidden'; document.body.style.overflowY='auto';
+    window.scrollTo(0,0);
     cardOpen=true; setupScrollReveal(); initPresent(); startMusic();
   },1250);
 }
