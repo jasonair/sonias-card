@@ -473,7 +473,33 @@ function showFallback() {
 // PRESENT MINI-GAME
 // ══════════════════════════════════════
 let tapCount=0, presentOpened=false, scratchCtx=null;
+let decayTimer=null, decayInterval=null;
 const TAPS_NEEDED=20;
+
+function clearDecay() {
+  clearTimeout(decayTimer); clearInterval(decayInterval);
+  decayTimer=null; decayInterval=null;
+}
+function startDecay() {
+  clearDecay();
+  decayTimer=setTimeout(()=>{
+    decayInterval=setInterval(()=>{
+      if(presentOpened){clearDecay();return;}
+      tapCount=Math.max(0,tapCount-.8);
+      updateProgress();
+      if(tapCount===0) clearDecay();
+    },280);
+  },600);
+}
+function updateProgress() {
+  const pct=Math.min(100,(tapCount/TAPS_NEEDED)*100);
+  document.getElementById('progress-fill').style.width=pct+'%';
+  const prompt=document.getElementById('tap-prompt');
+  if(tapCount>=TAPS_NEEDED*.75){prompt.textContent='Almost there! 🎁✨';prompt.classList.add('almost');}
+  else if(tapCount>=TAPS_NEEDED*.5){prompt.textContent='Keep going! 💜';prompt.classList.remove('almost');}
+  else if(tapCount>=TAPS_NEEDED*.25){prompt.textContent="You're getting there! 🎀";prompt.classList.remove('almost');}
+  else{prompt.textContent='Tap to unwrap 🎁';prompt.classList.remove('almost');}
+}
 
 function initPresent() {
   const sc=document.getElementById('scratch-canvas');
@@ -533,16 +559,12 @@ function tapPresent(e) {
   setTimeout(()=>cont.classList.remove('shaking'),350);
   // Progress
   tapCount++;
-  const pct=Math.min(100,(tapCount/TAPS_NEEDED)*100);
-  document.getElementById('progress-fill').style.width=pct+'%';
-  const prompt=document.getElementById('tap-prompt');
-  if(tapCount>=TAPS_NEEDED*.75) { prompt.textContent='Almost there! 🎁✨'; prompt.classList.add('almost'); }
-  else if(tapCount>=TAPS_NEEDED*.5) prompt.textContent='Keep going! 💜';
-  else if(tapCount>=TAPS_NEEDED*.25) prompt.textContent="You're getting there! 🎀";
+  updateProgress();
+  startDecay();
   // Tear sound
   playTearSound();
   // Done?
-  if(tapCount>=TAPS_NEEDED&&!presentOpened) { presentOpened=true; setTimeout(openPresent,400); }
+  if(tapCount>=TAPS_NEEDED&&!presentOpened) { presentOpened=true; clearDecay(); setTimeout(openPresent,400); }
 }
 
 function spawnTorn(cx,cy) {
