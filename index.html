@@ -25,7 +25,7 @@
       --cream:#fdf6f0; --purple:#7c3aed; --deep-purple:#4c1d95;
     }
     html { scroll-behavior:smooth; }
-    body { font-family:'Lato',sans-serif; background:var(--cream); color:#4a3040; overflow-x:hidden; min-height:100vh; }
+    body { font-family:'Lato',sans-serif; background:var(--cream); color:#4a3040; overflow:hidden; min-height:100vh; }
 
     #canvas { position:fixed; inset:0; pointer-events:none; z-index:15; }
 
@@ -308,6 +308,7 @@
 <button id="music-btn" onclick="toggleMusic()" aria-label="Toggle music">🎵</button>
 
 <script>
+window.scrollTo(0,0);
 // ══════════════════════════════════════
 // CANVAS + PARTICLE SYSTEM
 // ══════════════════════════════════════
@@ -450,6 +451,7 @@ function openCard() {
   setTimeout(()=>{
     document.getElementById('envelope-scene').classList.add('hidden');
     document.getElementById('card').classList.add('show');
+    document.body.style.overflow='';
     cardOpen=true; setupScrollReveal(); initPresent();
   },1250);
 }
